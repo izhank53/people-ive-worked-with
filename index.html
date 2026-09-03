@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A personal farewell collection of people who were part of Izhan's journey.">
+<title>Before I Go — People I've Worked With</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="topbar wrap">
+        <span class="brand">Mohammad Izhan</span>
+        <span class="top-note">A chapter worth remembering</span>
+      </div>
+
+      <div class="hero-inner wrap">
+        <div class="notebook-note" aria-hidden="true">
+          <span>Thank you for</span>
+          <span>the memories,</span>
+          <span>the lessons</span>
+          <span>and the laughter.</span>
+        </div>
+
+                <h1>Before I <em>Go...</em></h1>
+        <div class="title-rule"><span>✦</span></div>
+        <p class="hero-subtitle">A few people who made this journey memorable.</p>
+
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Search a name..." autocomplete="off" aria-label="Search a name">
+        </div>
+
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow">THE PEOPLE</p>
+          <h2>A few names worth remembering.</h2>
+        </div>
+      </div>
+
+      <section id="people" class="grid" aria-label="People I've worked with"></section>
+      <p id="empty" class="empty" hidden>No matching name found.</p>
+    </main>
+
+    <div id="modal" class="modal" hidden>
+      <div class="backdrop" data-close></div>
+      <article class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <button class="close" data-close aria-label="Close">×</button>
+
+        <div class="letter-paper">
+          <div class="paper-clip" aria-hidden="true"></div>
+          <div id="modal-initials" class="modal-initials"></div>
+          <p class="eyebrow">A LITTLE NOTE</p>
+          <h2 id="modal-name"></h2>
+          <div class="rule"></div>
+          <p id="modal-text" class="message"></p>
+          <div class="signature">All the best always!<br><span>— From me</span></div>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <span>Some people make the journey memorable.</span>
+      </div>
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

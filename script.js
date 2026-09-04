@@ -52,7 +52,8 @@ I appreciate the opportunity to have worked with him and wish him all the very b
     {
         name: "Moyeed",
         message: `Moyeed is one of the calmest guys around. 😄
-Always chill and somehow never seems to be in a hurry about anything.`
+Always chill and somehow never seems to be in a hurry about anything.
+Working with him was always easy and comfortable, and that’s something I’ll remember.`
     },
 
     {
@@ -106,32 +107,37 @@ Jokes apart, she’s a genuinely good person, and her love for animals is someth
 
     {
         name: "Asra",
-        message: `Goodbye, and all the best!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
     },
 
     {
         name: "Manideep Adhikam",
-        message: `All the best for what’s ahead!`
+        message: `We only got to work together for a short time, but it was still good having you around. Wishing you all the very best for what’s ahead. Good luck!`
     },
 
     {
         name: "Shiva",
-        message: `Goodbye & good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
     },
 
     {
         name: "Thaher",
-        message: `Goodbye, and all the best!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
     },
 
     {
         name: "Vaishnavi",
-        message: `All the best for what’s ahead!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+    },
+
+    {
+        name: "Jaspal",
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
     },
 
     {
         name: "Akash",
-        message: `Goodbye & good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
     }
 ];
 
@@ -162,11 +168,6 @@ const shortGoodbyeNames = [
   "Akash"
 ];
 
-const shortGoodbyeHints = [
-  "A few words for you →",
-  "Before I leave... →"
-];
-
 function initials(name) {
   return name.split(/\s+/).map(x => x[0]).slice(0, 2).join("").toUpperCase();
 }
@@ -184,13 +185,20 @@ function render(query = "") {
   }
 
   grid.innerHTML = list.map((p, i) => {
-    let hint;
-
+    // Newer people get a visible farewell directly on the card.
     if (shortGoodbyeNames.includes(p.name)) {
-      hint = shortGoodbyeHints[Math.floor(Math.random() * shortGoodbyeHints.length)];
-    } else {
-      hint = hints[i % hints.length];
+      return `<article class="card simple-goodbye-card">
+        <div class="card-top">
+          <div class="initials">${initials(p.name)}</div>
+        </div>
+        <div>
+          <h3>${p.name}</h3>
+          <p>We may not have had much time together, but it was nice having you around. Good luck and all the best for what’s ahead!</p>
+        </div>
+      </article>`;
     }
+
+    const hint = hints[i % hints.length];
 
     return `<article class="card" data-index="${people.indexOf(p)}">
       <div class="card-top">
@@ -206,7 +214,7 @@ function render(query = "") {
 
   empty.hidden = list.length !== 0;
 
-  grid.querySelectorAll(".card").forEach(c =>
+  grid.querySelectorAll(".card[data-index]").forEach(c =>
     c.addEventListener("click", () => open(Number(c.dataset.index)))
   );
 }
@@ -232,3 +240,245 @@ document.addEventListener("keydown", e => {
 });
 
 render();
+
+
+/* =========================================================
+   Shared farewell guestbook — Supabase
+   Replace these two values with your Supabase Project URL
+   and anon/public key. NEVER put a service_role key here.
+   ========================================================= */
+const SUPABASE_URL = "https://oocfpsivsqnybynfxjio.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_w1OWuGH3Ox96ND1C7ddsNQ_EL8kNZkP";
+
+const guestbook = {
+  client: null,
+  user: null,
+  comments: [],
+  replies: {},
+  commentLikes: new Set(),
+  replyLikes: new Set()
+};
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+  }[ch]));
+}
+
+function formatTime(value) {
+  const d = new Date(value);
+  return d.toLocaleString([], { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" });
+}
+
+function isConfigured() {
+  return SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") &&
+         SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.includes("YOUR_");
+}
+
+function setGuestbookStatus(message, kind = "") {
+  const el = document.getElementById("guestbook-status");
+  if (!el) return;
+  el.textContent = message || "";
+  el.className = `guestbook-status ${kind}`;
+}
+
+function renderSocialComments() {
+  const list = document.getElementById("guestbook-comments");
+  if (!list) return;
+  if (!guestbook.comments.length) {
+    list.innerHTML = `<div class="comments-empty">No messages yet. Be the first one to leave something behind. 😄</div>`;
+    return;
+  }
+
+  list.innerHTML = guestbook.comments.map(comment => {
+    const replies = guestbook.replies[comment.id] || [];
+    const liked = guestbook.commentLikes.has(comment.id);
+    return `
+      <article class="comment-card" data-comment-id="${comment.id}">
+        <div class="comment-head">
+          <div class="comment-avatar">${escapeHtml(initials(comment.name))}</div>
+          <div class="comment-meta"><strong>${escapeHtml(comment.name)}</strong><span>${formatTime(comment.created_at)}</span></div>
+        </div>
+        <p class="comment-body">${escapeHtml(comment.message).replace(/\n/g, "<br>")}</p>
+        <div class="comment-actions">
+          <button class="social-btn ${liked ? "liked" : ""}" data-action="like-comment" data-id="${comment.id}">👍 <span>${comment.like_count || 0}</span></button>
+          <button class="social-btn" data-action="toggle-reply" data-id="${comment.id}">↩ Reply</button>
+        </div>
+        <div class="reply-form" id="reply-form-${comment.id}" hidden>
+          <input data-reply-name="${comment.id}" maxlength="40" placeholder="Your name">
+          <textarea data-reply-text="${comment.id}" maxlength="500" placeholder="Write a reply..."></textarea>
+          <button data-action="post-reply" data-id="${comment.id}">Post reply</button>
+        </div>
+        <div class="replies">
+          ${replies.map(reply => {
+            const replyLiked = guestbook.replyLikes.has(reply.id);
+            return `<div class="reply-card">
+              <div class="comment-head">
+                <div class="comment-avatar small">${escapeHtml(initials(reply.name))}</div>
+                <div class="comment-meta"><strong>${escapeHtml(reply.name)}</strong><span>${formatTime(reply.created_at)}</span></div>
+              </div>
+              <p class="comment-body">${escapeHtml(reply.message).replace(/\n/g, "<br>")}</p>
+              <button class="social-btn ${replyLiked ? "liked" : ""}" data-action="like-reply" data-id="${reply.id}">👍 <span>${reply.like_count || 0}</span></button>
+            </div>`;
+          }).join("")}
+        </div>
+      </article>`;
+  }).join("");
+}
+
+async function loadSocialData() {
+  const { data: comments, error } = await guestbook.client
+    .from("comments")
+    .select("id,name,message,created_at,like_count")
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  guestbook.comments = comments || [];
+
+  const { data: replies, error: replyError } = await guestbook.client
+    .from("replies")
+    .select("id,comment_id,name,message,created_at,like_count")
+    .order("created_at", { ascending: true });
+  if (replyError) throw replyError;
+  guestbook.replies = {};
+  (replies || []).forEach(r => {
+    (guestbook.replies[r.comment_id] ||= []).push(r);
+  });
+
+  const { data: cLikes, error: cLikeError } = await guestbook.client
+    .from("comment_likes").select("comment_id").eq("user_id", guestbook.user.id);
+  if (cLikeError) throw cLikeError;
+  guestbook.commentLikes = new Set((cLikes || []).map(x => x.comment_id));
+
+  const { data: rLikes, error: rLikeError } = await guestbook.client
+    .from("reply_likes").select("reply_id").eq("user_id", guestbook.user.id);
+  if (rLikeError) throw rLikeError;
+  guestbook.replyLikes = new Set((rLikes || []).map(x => x.reply_id));
+
+  renderSocialComments();
+}
+
+async function requireUserName(input) {
+  const name = input.value.trim();
+  if (!name) {
+    input.focus();
+    throw new Error("Please enter your name.");
+  }
+  return name;
+}
+
+async function postComment() {
+  try {
+    const name = await requireUserName(document.getElementById("comment-name"));
+    const message = document.getElementById("comment-text").value.trim();
+    if (!message) throw new Error("Please write a message.");
+    const { error } = await guestbook.client.from("comments").insert({
+      user_id: guestbook.user.id, name, message
+    });
+    if (error) throw error;
+    document.getElementById("comment-text").value = "";
+    localStorage.setItem("farewellGuestName", name);
+    setGuestbookStatus("Message posted!", "success");
+    await loadSocialData();
+  } catch (e) { setGuestbookStatus(e.message, "error"); }
+}
+
+async function postReply(commentId) {
+  try {
+    const nameInput = document.querySelector(`[data-reply-name="${commentId}"]`);
+    const textInput = document.querySelector(`[data-reply-text="${commentId}"]`);
+    const name = await requireUserName(nameInput);
+    const message = textInput.value.trim();
+    if (!message) throw new Error("Please write a reply.");
+    const { error } = await guestbook.client.from("replies").insert({
+      comment_id: commentId, user_id: guestbook.user.id, name, message
+    });
+    if (error) throw error;
+    textInput.value = "";
+    localStorage.setItem("farewellGuestName", name);
+    document.getElementById(`reply-form-${commentId}`).hidden = true;
+    setGuestbookStatus("Reply posted!", "success");
+    await loadSocialData();
+  } catch (e) { setGuestbookStatus(e.message, "error"); }
+}
+
+async function toggleLike(table, idColumn, id, set, countTable, countColumn) {
+  try {
+    const alreadyLiked = set.has(id);
+    if (alreadyLiked) {
+      const { error } = await guestbook.client.from(table).delete()
+        .eq(idColumn, id).eq("user_id", guestbook.user.id);
+      if (error) throw error;
+      set.delete(id);
+    } else {
+      const { error } = await guestbook.client.from(table).insert({
+        [idColumn]: id, user_id: guestbook.user.id
+      });
+      if (error) throw error;
+      set.add(id);
+    }
+    await loadSocialData();
+  } catch (e) { setGuestbookStatus("Could not update the like. Please try again.", "error"); }
+}
+
+function wireSocialEvents() {
+  document.getElementById("post-comment")?.addEventListener("click", postComment);
+  document.getElementById("guestbook-comments")?.addEventListener("click", async e => {
+    const btn = e.target.closest("button[data-action]");
+    if (!btn) return;
+    const id = btn.dataset.id;
+    if (btn.dataset.action === "toggle-reply") {
+      const form = document.getElementById(`reply-form-${id}`);
+      form.hidden = !form.hidden;
+      if (!form.hidden) document.querySelector(`[data-reply-name="${id}"]`)?.focus();
+    } else if (btn.dataset.action === "post-reply") {
+      await postReply(id);
+    } else if (btn.dataset.action === "like-comment") {
+      await toggleLike("comment_likes", "comment_id", id, guestbook.commentLikes);
+    } else if (btn.dataset.action === "like-reply") {
+      await toggleLike("reply_likes", "reply_id", id, guestbook.replyLikes);
+    }
+  });
+}
+
+async function initSocial() {
+  const section = document.getElementById("guestbook");
+  if (!section) return;
+  if (!isConfigured()) {
+    setGuestbookStatus("Demo mode: add your Supabase URL and anon key in script.js to make messages shared.", "demo");
+    document.getElementById("guestbook-comments").innerHTML = `
+      <div class="comments-empty demo-preview">
+        <strong>Preview</strong>
+        <div class="preview-comment"><b>Akshaya</b><span>All the best Izhan! 😄</span><small>👍 4 &nbsp; ↩ Reply</small></div>
+        <div class="preview-comment"><b>Harsh</b><span>Bro, the bike comment 😂</span><small>👍 7 &nbsp; ↩ Reply</small></div>
+      </div>`;
+    return;
+  }
+
+  try {
+    setGuestbookStatus("Connecting...", "demo");
+    const { createClient } = window.supabase;
+    guestbook.client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const { data, error } = await guestbook.client.auth.signInAnonymously();
+    if (error) throw error;
+    guestbook.user = data.user;
+    const savedName = localStorage.getItem("farewellGuestName");
+    if (savedName) document.getElementById("comment-name").value = savedName;
+    await loadSocialData();
+    wireSocialEvents();
+    setGuestbookStatus("", "");
+
+    guestbook.client.channel("farewell-live")
+      .on("postgres_changes", { event: "*", schema: "public", table: "comments" }, loadSocialData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "replies" }, loadSocialData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "comment_likes" }, loadSocialData)
+      .on("postgres_changes", { event: "*", schema: "public", table: "reply_likes" }, loadSocialData)
+      .subscribe();
+  } catch (e) {
+    setGuestbookStatus("The guestbook could not connect. Check the Supabase setup.", "error");
+    console.error(e);
+  }
+}
+
+const guestNameInput = document.getElementById("comment-name");
+if (guestNameInput) guestNameInput.value = localStorage.getItem("farewellGuestName") || "";
+initSocial();

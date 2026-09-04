@@ -55,7 +55,7 @@
         <div class="letter-paper">
           <div class="paper-clip" aria-hidden="true"></div>
           <div id="modal-initials" class="modal-initials"></div>
-          <p class="eyebrow">A LITTLE NOTE</p>
+          <p class="eyebrow">A FEW WORDS</p>
           <h2 id="modal-name"></h2>
           <div class="rule"></div>
           <p id="modal-text" class="message"></p>
@@ -64,6 +64,24 @@
       </article>
     </div>
 
+
+    <section id="guestbook" class="guestbook wrap" aria-labelledby="guestbook-title">
+      <div class="guestbook-heading">
+        <p class="eyebrow">ONE LAST THING...</p>
+        <h2 id="guestbook-title">Leave something behind.</h2>
+        <p>A message, a memory, a joke, or just a goodbye. 😄</p>
+      </div>
+
+      <div class="guestbook-form">
+        <input id="comment-name" type="text" maxlength="40" placeholder="Your name" autocomplete="name">
+        <textarea id="comment-text" maxlength="500" placeholder="Write something..."></textarea>
+        <button id="post-comment" type="button">Post message</button>
+        <p id="guestbook-status" class="guestbook-status"></p>
+      </div>
+
+      <div id="guestbook-comments" class="guestbook-comments" aria-live="polite"></div>
+    </section>
+
     <footer>
       <div class="wrap">
         <span>Some people make the journey memorable.</span>
@@ -71,6 +89,7 @@
     </footer>
   </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 </body>
 </html>

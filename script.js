@@ -19,7 +19,7 @@ Wishing her all the very best for the future.`
 
     {
         name: "Harsh",
-        message: `Harsh bhai you are honestly one of the best people I’ve worked with. Super chill, easy to talk to, and somehow manages to be a manager without making you feel like you’re talking to a manager. 😄
+        message: `Harsh bhai you are honestly one of the best people I’ve worked with. Super chill, easy to talk to, and somehow manages to be a manager without making us feel like you’re talking to a manager. 😄
 
 And then there’s the biker side  — I’m sure you would choose a bike ride over a team meeting any day! 😂`
     },

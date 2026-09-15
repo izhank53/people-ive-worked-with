@@ -11,7 +11,6 @@ Whenever I got stuck with troubleshooting, she was always there to help me figur
     {
         name: "Pallavi",
         message: `Pallavi has been a part of my journey here. I really appreciate the guidance and support she provided during my time with the team, and I’m glad I had the opportunity to work with her along the way.
-
 Wishing her all the very best for the future.`
     },
     {
@@ -22,7 +21,8 @@ And then there’s the biker side, I’m sure you would choose a bike ride over 
     },
     {
         name: "Manisha",
-        message: `Manisha has been a valued part of my journey here. I’ve learned a lot from her during my time here, and I appreciate the opportunity to have worked with her and the experience we shared as part of the team. Wishing her all the very best and continued success in the future.`
+        message: `Manisha has been a valued part of my journey here. I’ve learned a lot from her during my time here, and I appreciate the opportunity to have worked with her and the experience we shared as part of the team. 
+Wishing her all the very best and continued success in the future.`
     },
     {
         name: "Lavanya B",

@@ -4,155 +4,129 @@ const people = [
         message: `Akshaya has probably heard me say “Akshaya, one issue…” more times than she would like to remember. 😄
 Whenever I got stuck with troubleshooting, she was always there to help me figure things out. A big part of what I learned came from her guidance, and I’m genuinely thankful for that.`
     },
-
     {
         name: "Akshay",
-        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck! 🙂`
     },
-
     {
         name: "Pallavi",
         message: `Pallavi has been a part of my journey here. I really appreciate the guidance and support she provided during my time with the team, and I’m glad I had the opportunity to work with her along the way.
 
 Wishing her all the very best for the future.`
     },
-
     {
         name: "Harsh",
         message: `Harsh bhai you are honestly one of the best people I’ve worked with. Super chill, easy to talk to, and somehow manages to be a manager without making you feel like you’re talking to a manager. 😄
 
 And then there’s the biker side, I’m sure you would choose a bike ride over a team meeting any day! 😂`
     },
-
     {
         name: "Manisha",
         message: `Manisha has been a valued part of my journey here. I’ve learned a lot from her during my time here, and I appreciate the opportunity to have worked with her and the experience we shared as part of the team. Wishing her all the very best and continued success in the future.`
     },
-
     {
         name: "Lavanya B",
         message: `Lavanya is not just a colleague, she’s more like a sister. 😊
 She’s genuinely one of the nicest people I’ve met here, and having someone like her around made work feel a little less like just work. 😄
 Definitely going to miss her.`
     },
-
     {
         name: "Manideep T",
         message: `Manideep is one of those guys who can make even a normal workday unnecessarily funny. 😄
 Somehow, he always seems to know people and names that the rest of us have never even heard of. 😂 I still don’t know how he does it.
 Always fun to work with, always good conversations, and definitely one of the people who made the team more enjoyable.`
     },
-
     {
         name: "Pratheesh",
         message: `If there was a serious conversation happening, there was always a good chance we would somehow turn it into something funny. 😂
 Lots of laughs, random jokes, and completely unnecessary conversations with him — but honestly, those are the things I’ll remember.`
     },
-
     {
         name: "Bharath",
         message: `Bharath has always been someone who likes to give his best at whatever he does. 😄
 There was always a little extra effort to make sure things were done right. 😂
 I appreciate the opportunity to have worked with him and wish him all the very best for the future.`
     },
-
     {
         name: "Moyeed",
         message: `Moyeed is one of the calmest guys around. 😄 
         Always chill and somehow never seems to be in a hurry. That calm and easygoing nature is what stands out about him the most.`
     },
-
     {
         name: "Prabhu",
         message: `Prabhu started with us and then moved into QA, but somehow he never really left the team. 😂
 He was still with us, hanging around, and being part of the same journey.`
     },
-
     {
         name: "Priya",
         message: `Priya is genuinely a very good person and someone who was always nice to have around. Sometimes it’s the small, everyday interactions that stay with you, and I’ll definitely remember those from my time here. 😊`
     },
-
     {
         name: "Sirisha",
         message: `Sirisha definitely has one of those laughs that you don’t just hear, you know it’s Sirisha. 😂
 She’s a fun person, always brings some energy around the team, and was definitely one of the people who made the workplace more lively.`
     },
-
     {
         name: "Ashwitha",
         message: `Ashwitha left just a few days before me, so technically she got her freedom a little earlier. 😂
 She’s one of those people with way too many talents, content creator, dancer and of course Best Actress 😂 ... basically someone who clearly has plans beyond sitting in front of a laptop all day. 😄
 Wishing her the very best for whatever she does next.`
     },
-
     {
         name: "Pratyusha",
         message: `Pratyusha is a genuinely good person and someone I’ll remember for all the little things. Especially the legendary orange requests. 😂
 She kept asking me for oranges, but somehow those oranges never actually made it to her. 😂 Still waiting for that request to be fulfilled!`
     },
-
     {
         name: "Oleti",
         message: `Oleti is probably one of the chillest people around. No unnecessary tension, no overcomplication, just chill. 😄
 Working with him was always easy and comfortable, and that’s something you really appreciate in a team.`
     },
-
     {
         name: "Harish",
         message: `Harish is one of those people who was always great to have around. Easy to talk to, friendly, and always good for a conversation. I’m really glad I got the chance to work with him, and I wish him all the very best for the future. 😊`
     },
-
     {
         name: "Kranthi",
         message: `Kranthi is one of those people who has interests in basically everything. 😄
 Team Lead, dog lover, animal lover, influencer — I wouldn’t be surprised if she has another completely different profession we don’t know about!
 Jokes apart, she’s a genuinely good person, and her love for animals is something that really stands out.`
     },
-
     {
         name: "Asra",
-        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck! 🙂`
     },
-
     {
         name: "Manideep Adhikam",
-        message: `We only got to work together for a short time, but it was still good having you around. Wishing you all the very best for what’s ahead. Good luck!`
+        message: `We only got to work together for a short time, but it was still good having you around. Wishing you all the very best for what’s ahead. Good luck! 🙂`
     },
-
     {
         name: "Siva",
-        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck! 🙂`
     },
-
     {
         name: "Thaher",
-        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck! 🙂`
     },
-
     {
         name: "Vyshnavi",
-        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck! 🙂`
     },
-
     {
         name: "Jaspal",
-        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you as part of this journey. Wishing you all the very best for what comes next. Good luck! 🙂`
     },
-
     {
         name: "Lavanya",
-        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck! 🙂`
     },
-
     {
         name: "Renuka",
-        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck! 🙂`
     },
-
     {
         name: "Ramya",
-        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck!`
+        message: `We may not have had a lot of time together, but it was still nice having you around. Wishing you all the very best for what’s ahead. Good luck! 🙂`
     }
 ];
 
@@ -194,7 +168,6 @@ function render(query = "") {
   const q = query.trim().toLowerCase();
   let list = people.filter(p => p.name.toLowerCase().includes(q));
 
-  // Keep Harsh first, randomize everyone else.
   if (!q) {
     const harshIndex = list.findIndex(p => p.name === "Harsh");
     const harsh = list.splice(harshIndex, 1)[0];
@@ -203,7 +176,6 @@ function render(query = "") {
   }
 
   grid.innerHTML = list.map((p, i) => {
-    // Everyone is clickable. The newer/short-goodbye group keeps one constant hint.
     const hint = fixedHintNames.includes(p.name)
       ? "There’s a little note here →"
       : hints[i % hints.length];

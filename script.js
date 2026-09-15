@@ -49,8 +49,7 @@ I appreciate the opportunity to have worked with him and wish him all the very b
     },
     {
         name: "Moyeed",
-        message: `Moyeed is one of the calmest guys around. 😄 
-        Always chill and somehow never seems to be in a hurry. That calm and easygoing nature is what stands out about him the most.`
+        message: `Moyeed is one of the calmest guys around. 😄 Always chill and somehow never seems to be in a hurry. That calm and easygoing nature is definitely one of the things I’ll remember about him. He’s the kind of person who makes things feel a little more relaxed just by being around.`
     },
     {
         name: "Prabhu",

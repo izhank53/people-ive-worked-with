@@ -15,9 +15,9 @@ Wishing her all the very best for the future.`
     },
     {
         name: "Harsh",
-        message: `Harsh bhai you are honestly one of the best people I’ve worked with. Super chill, easy to talk to, and somehow manages to be a manager without making us feel like we are talking to a manager. 😄
+        message: `Harsh bhai you are honestly one of the best people I have worked with. Super chill, easy to talk to, and somehow manages to be a manager without making us feel like we are talking to a manager. 😄
 
-And then there’s the biker side, I’m sure you would choose a bike ride over a team meeting any day! 😂`
+And then there is the biker side, I am sure you would choose a bike ride over a team meeting any day! 😂`
     },
     {
         name: "Manisha",
